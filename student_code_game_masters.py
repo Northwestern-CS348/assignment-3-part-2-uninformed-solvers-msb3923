@@ -187,16 +187,10 @@ class Puzzle8Game(GameMaster):
             None
         """
         ### Student code goes here
-        tile = str(movable_statement.terms[0])
-        x_start = str(movable_statement.terms[1])
-        y_start = str(movable_statement.terms[2])
-        x_finish = str(movable_statement.terms[3])
-        y_finish = str(movable_statement.terms[4])
-
-        self.kb.kb_retract(parse_input("fact: (loc " + tile + " " + x_start + " " + y_start + ")"))
-        self.kb.kb_retract(parse_input("fact: (loc  empty " + x_finish + " " + y_finish + ")"))
-        self.kb.kb_assert(parse_input("fact: (loc " + tile + " " + x_finish + " " + y_finish + ")"))
-        self.kb.kb_assert(parse_input("fact: (loc  empty " + x_start + " " + y_start + ")"))
+        self.kb.kb_retract(parse_input("fact: (loc " + str(movable_statement.terms[0]) + " " + str(movable_statement.terms[1]) + " " + str(movable_statement.terms[2]) + ")"))
+        self.kb.kb_retract(parse_input("fact: (loc  empty " + str(movable_statement.terms[3]) + " " + str(movable_statement.terms[4]) + ")"))
+        self.kb.kb_assert(parse_input("fact: (loc " + str(movable_statement.terms[0]) + " " + str(movable_statement.terms[3]) + " " + str(movable_statement.terms[4]) + ")"))
+        self.kb.kb_assert(parse_input("fact: (loc  empty " + str(movable_statement.terms[1]) + " " + str(movable_statement.terms[2]) + ")"))
 
     def reverseMove(self, movable_statement):
         """
